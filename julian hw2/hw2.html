@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  
+  <style>
+  #red, #green, #blue {
+    float: left;
+    clear: left;
+    width: 300px;
+    margin: 15px;
+  }
+  #swatch, #match {
+    width: 120px;
+    height: 100px;
+    margin-top: 18px;
+    .margin-left: 350px;
+    background-image: none;
+  }
+  
+  #red .ui-slider-range { background: #ef2929; }
+  #red .ui-slider-handle { border-color: #ef2929; }
+  #green .ui-slider-range { background: #8ae234; }
+  #green .ui-slider-handle { border-color: #8ae234; }
+  #blue .ui-slider-range { background: #729fcf; }
+  #blue .ui-slider-handle { border-color: #729fcf; }
+  
+  li { list-style: none; clear: left; float: left;}
+  </style>
+  
+  <script>
+  var r_red = Math.floor(Math.random() * (255 + 1));
+  var r_green = Math.floor(Math.random() * (255 + 1));
+  var r_blue = Math.floor(Math.random() * (255 + 1));
+  var randomColor = hexFromRGB(r_red,r_green,r_blue);
+  var start_time = new Date().getTime();
+  var difficulty = 1;
+  
+  function hexFromRGB(r, g, b) {
+    var hex = [
+      r.toString( 16 ),
+      g.toString( 16 ),
+      b.toString( 16 )
+    ];
+    $.each( hex, function( nr, val ) {
+      if ( val.length === 1 ) {
+        hex[ nr ] = "0" + val;
+      }
+    });
+    return hex.join( "" ).toUpperCase();
+  }
+  function refreshSwatch() {
+      red = $( "#red" ).slider( "value" ),
+      green = $( "#green" ).slider( "value" ),
+      blue = $( "#blue" ).slider( "value" ),
+      hex = hexFromRGB( red, green, blue );
+	  g_hex = hex;
+    $( "#swatch" ).css( "background-color", "#" + hex );
+	$( "#swatch_disp" ).text(hex);
+	$( "#red_disp" ).text(red);
+	$( "#green_disp" ).text(green);
+	$( "#blue_disp" ).text(blue);
+  }
+  function get_score() {
+	var r_diff = Math.abs((r_red-red)/255)*100;
+	var g_diff = Math.abs((r_green-green)/255)*100;
+	var b_diff = Math.abs((r_blue-blue)/255)*100;
+	var percent_off = (r_diff + g_diff + b_diff)/3;
+	var end_time = new Date().getTime();
+	var milliseconds_taken = end_time - start_time;
+	var result = ((((15-difficulty)-percent_off)/(15-difficulty))*(15000-milliseconds_taken));
+	alert(milliseconds_taken);
+	$( "#score" ).text(result);
+  }
+  $(function() {
+    $( "#red, #green, #blue" ).slider({
+      orientation: "horizontal",
+      range: "min",
+      max: 255,
+      value: 0,
+      slide: refreshSwatch,
+      change: refreshSwatch
+	  
+    });
+    $( "#red" ).slider( "value", 0 );
+    $( "#green" ).slider( "value", 0 );
+    $( "#blue" ).slider( "value", 0 );
+	$( "#match" ).css( "background-color", "#" + randomColor);
+	$( "#match_disp" ).text(randomColor);
+	
+  });
+  </script>
+</head>
+<body class="ui-widget-content" style="border:0;">
+ 
+
+ 
+<ul>
+	<li id="match"></li>
+	<li id="match_disp"></li>
+	
+	<li id="swatch"></li>
+	<li id="swatch_disp"></li>
+	
+	<li id="red"></li>
+	<li id="red_disp"></li>
+	
+	<li id="green"></li>
+	<li id="green_disp"></li>
+	
+	<li id="blue"></li>
+	<li id="blue_disp"></li>
+	
+	<li><button type="button" onclick="get_score()">Get Score!!!!</button></li>
+	<li id="score"></li>
+</ul>
+ 
+ 
+ 
+</body>
+
+</html>
