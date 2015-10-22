@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Slider - Colorpicker</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="hw2.css">
+  <script src="hw2.js"></script>
+</head>
+
+<body class="ui-widget-content" style="border:0;">
+ 
+  <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+    <span class="ui-icon ui-icon-pencil" style="float:left; margin:-2px 5px 0 0;"></span>
+    "Stupid" color guess game
+  </p>
+  
+  <label for="difficulty">Select a difficulty</label>
+  <select name="difficulty" id="difficulty">
+    <option>0</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option selected="selected">5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
+  </select>
+  <p>Turns: <input type="text" name="turns" value="10" id="turns" /></p>
+  <button type="button" id="start">Start the game!</button>
+  <h3 id="roundInfo">Round 0 of 10</h3>
+  <p>Target Color:</p>
+  <div id="sample" class="ui-widget-content ui-corner-all"></div> 
+  <p>Your Color:</p>
+  <div id="swatch" class="ui-widget-content ui-corner-all"></div>
+  <p id="hexNum"></p>
+  
+  <div id="red"></div>
+  <div id="green"></div>
+  <div id="blue"></div>
+  
+  <button type="button" id="btn">Check it!</button>
+  <p id="score">Last Try Score: 0</p>
+  <p id="totalScore">Total Score: 0</p>
+ 
+</body>
+</html>
