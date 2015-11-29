@@ -1,5 +1,5 @@
 <?php
-	include('login.php'); //includes login script
+	include('login2.php'); //includes login script
 	if(isset($_SESSION['login_user'])) {
 		header("location: studybuddyplus.php"); //if successful login redirects to studybuddyplus.php
 	}
@@ -96,14 +96,15 @@
                     </div>
                     <!-- /.row -->
 
-                    <form>
+                    <form action="" method="post">
+					<div><?php echo $error; ?></div>
                         <div class="form-group col-md-12">                    
                             <label>Username</label>
                             <input id="username" name="username" class="form-control" placeholder="Your username" required>
                         </div>
                         <div class="form-group col-md-12">                    
                             <label>Password</label>
-                            <input id="password" name="password" class="form-control" placeholder="Your Password" required>
+                            <input id="password" name="password" type="password" class="form-control" placeholder="Your Password" required>
                         </div>
                         <input name="submit" type="submit" value=" Login" class="btn btn-success"><!--Login</button-->
                         <div>
@@ -114,20 +115,6 @@
                     </form>
                 </div>
                 <!-- /.container-fluid -->
-			
-			<div id="login">
-<h2>Login Form</h2>
-<form action="" method="post">
-<label>UserName :</label>
-<input id="name" name="username" placeholder="username" type="text">
-<label>Password :</label>
-<input id="password" name="password" placeholder="**********" type="password">
-<input name="submit" type="submit" value=" Login ">
-<span><?php echo $error; ?></span>
-</form>
-</div>
-			
-			
 			
             </div>
             <!-- /#page-wrapper -->
