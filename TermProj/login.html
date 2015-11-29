@@ -1,3 +1,9 @@
+<?php
+	include('login.php'); //includes login script
+	if(isset($_SESSION['login_user'])) {
+		header("location: studybuddyplus.php"); //if successful login redirects to studybuddyplus.php
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,11 +40,39 @@
 
     <body>
 
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">StudyBuddy+</a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Sign in! <b
+                        class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                </ul>
+            </li>
+        </ul>
+        </nav>
+
         <div id="wrapper">
 
             <!-- Navigation -->
-            <!--#include file="nav.html" -->
-            <div id="page-wrapper">
+            <div id="page-wrapper-ctr">
 
                 <div class="container-fluid">
 
@@ -65,22 +99,36 @@
                     <form>
                         <div class="form-group col-md-12">                    
                             <label>Username</label>
-                            <input class="form-control" placeholder="Enter text" required>
+                            <input id="username" name="username" class="form-control" placeholder="Your username" required>
                         </div>
                         <div class="form-group col-md-12">                    
                             <label>Password</label>
-                            <input class="form-control" placeholder="Enter text" required>
+                            <input id="password" name="password" class="form-control" placeholder="Your Password" required>
                         </div>
-                        <button type="submit" class="btn btn-success">Login</button>
+                        <input name="submit" type="submit" value=" Login" class="btn btn-success"><!--Login</button-->
                         <div>
                             <button type="button" class="btn btn-link">Forget Your Password?</button>
-                            <button type="button" class="btn btn-link">Register</button>
+                            <button onclick="location.href='registration.html';" type="button" class="btn btn-link">Register</button>
                         </div>
                         <!--</div>-->
                     </form>
                 </div>
                 <!-- /.container-fluid -->
-
+			
+			<div id="login">
+<h2>Login Form</h2>
+<form action="" method="post">
+<label>UserName :</label>
+<input id="name" name="username" placeholder="username" type="text">
+<label>Password :</label>
+<input id="password" name="password" placeholder="**********" type="password">
+<input name="submit" type="submit" value=" Login ">
+<span><?php echo $error; ?></span>
+</form>
+</div>
+			
+			
+			
             </div>
             <!-- /#page-wrapper -->
 

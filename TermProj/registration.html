@@ -47,34 +47,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.shtml">StudyBuddy+</a>
+                    <a class="navbar-brand" href="index.html">StudyBuddy+</a>
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                        <ul class="dropdown-menu alert-dropdown">
-                            <li>
-                                <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Alert Name <span class="label label-primary">Notice</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Alert Name <span class="label label-success">Answer</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Alert Name <span class="label label-warning">Question</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Alert Name <span class="label label-danger">Exam</span></a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">View All</a>
-                            </li>
-                        </ul>
-                    </li>
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -92,34 +69,9 @@
                     </li>
                 </ul>
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav side-nav">
-                        <li>
-                            <a href="dash.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> My Groups <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="demo" class="collapse">
-                                <li>
-                                    <a href="#">Group 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Group 2</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="active">
-                            <a href="index.shtml"><i class="fa fa-fw fa-edit"></i> Create Group</a>
-                        </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-fw fa-table"></i>Upcoming Exams</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
             </nav>
 
-            <div id="page-wrapper">
+            <div id="page-wrapper-ctr">
 
                 <div class="container-fluid">
 
@@ -146,34 +98,34 @@
                     <form>
                         <div class="form-group col-md-6">                    
                             <label>First Name</label>
-                            <input class="form-control" placeholder="Enter text" required>
+                            <input class="form-control" placeholder="First Name" required>
                         </div>
 
                         <div class="form-group col-md-6">                    
                             <label>Last Name</label>
-                            <input class="form-control" placeholder="Enter text" required>
+                            <input class="form-control" placeholder="Last Name" required>
                         </div>
                         <div class="form-group col-md-12">                    
                             <label>Username</label>
-                            <input class="form-control" placeholder="Enter text" required>
+                            <input class="form-control" placeholder="Choose a username" required>
                         </div>
 
                         <div class="form-group col-md-12">                    
                             <label>Email</label>
-                            <input class="form-control" placeholder="Enter text" required>
+                            <input type="email" class="form-control" placeholder="Enter your .edu email" required>
                         </div>
                         <div class="form-group col-md-6">                    
                             <label>Password</label>
-                            <input class="form-control" placeholder="Enter text" required>
+                            <input type="password" class="form-control" placeholder="Enter a password" required>
                         </div>
                         <div class="form-group col-md-6">                    
-                            <label>Password Confirmation</label>
-                            <input class="form-control" placeholder="Enter text" required>
+                            <label>Please confirm your password</label>
+                            <input type="password" class="form-control" placeholder="Enter the same password again" required>
                         </div>
                         <button type="submit" class="btn btn-success">Create Account</button>
-                        <div>
-                            <button type="button" class="btn btn-link">Login</button>
-                        </div>
+                        <br/>
+                        <p>Already have an account?</p>
+                        <a href="login.html" class="btn btn-primary" role="button"> Log In</a>
                         <!--</div>-->
                     </form>
                 </div>
