@@ -1,0 +1,10 @@
+login
+
+uid int(10)
+username varchar(255)
+password varchar(255)
+salt varchar(255)
+firstname varchar(255)
+lastname varchar(255)
+email varchar(255)
+privileges int(2)
