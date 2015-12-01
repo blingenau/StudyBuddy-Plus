@@ -18,7 +18,7 @@
 	$row = mysql_fetch_assoc($ses_sql);
 	$login_session =$row['username'];
 	if(!isset($login_session)){
-	mysql_close($connection); // Closing Connection
-	header('Location: index.html'); // Redirecting To Home Page
+		mysql_close($connection); // Closing Connection
+		header('Location: index.html'); // Redirecting To Home Page
 	}
 ?>
