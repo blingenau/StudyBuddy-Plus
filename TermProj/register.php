@@ -8,9 +8,11 @@ $error=''; // Variable To Store Error Message
 if (isset($_POST['submit'])) {
 if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email']) || empty($_POST['firstname']) || empty($_POST['lastname'])) {
 	$error = "Insufficient information given.";
-}
-else
-{
+}else if (strlen($_POST['password']) < 8){
+	$error = "Password length has to be 8 characters or more.";
+}else if (substr($_POST['email'],-4) != '.edu') {
+	$error = "Email has to be an .edu";
+}else {
 // Define $username and $password
 $username=$_POST['username'];
 $password=$_POST['password'];
