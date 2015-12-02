@@ -9,7 +9,7 @@
 	$error=''; // Variable To Store Error Message
 	if (isset($_POST['submit'])) {
 		if (empty($_POST['username']) || empty($_POST['password'])) {
-			$error = "Username or Password is invalid";
+			$error = "<p class='alert alert-warning'>Enter a username or password</p>";
 		}else {
 			// Define $username and $password
 			$username=$_POST['username'];
@@ -41,7 +41,7 @@
 				$_SESSION['login_user']=$username; // Initializing Session
 				header("location: dashboard.php"); // Redirecting To Other Page
 			} else {
-				$error = "Username or Password is invalid";
+				$error = "<p class='alert alert-danger'>Username or Password is invalid</p>";
 			}
 			mysql_close($connection); // Closing Connection
 		}

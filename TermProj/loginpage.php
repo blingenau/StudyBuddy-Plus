@@ -1,7 +1,7 @@
 <?php
 	include('login.php'); //includes login script
 	if(isset($_SESSION['login_user'])) {
-		header("location: studybuddyplus.php"); //if successful login redirects to studybuddyplus.php
+		header("location: dashboard.php"); //if successful login redirects to studybuddyplus.php
 	}
 ?>
 <!DOCTYPE html>
@@ -48,22 +48,6 @@
                 </button>
                 <a class="navbar-brand" href="index.html">StudyBuddy+</a>
             </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Sign in! <b
-                            class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                    </ul>
-                </li>
-            </ul>
         </nav>
 
         <div id="wrapper">
@@ -124,11 +108,6 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
-
-        <!-- Morris Charts JavaScript -->
-        <script src="js/plugins/morris/raphael.min.js"></script>
-        <script src="js/plugins/morris/morris.min.js"></script>
-        <script src="js/plugins/morris/morris-data.js"></script>
 
     </body>
 </html>  
