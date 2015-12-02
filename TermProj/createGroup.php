@@ -52,6 +52,6 @@
         $addMember_stmt->bindParam(1, $creator);
         $addMember_stmt->bindParam(2, $gName);
         $addMember_stmt->execute();
-        return mess;
+        return $mess;
     }
 ?>
