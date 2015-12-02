@@ -1,6 +1,7 @@
 <?php
     include 'session.php';
     include('getGroup.php');
+	include 'passwordchange.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Study Buddy+ | Profile</title>
+        <title>Study Buddy+ | Create Group</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -105,7 +106,7 @@
                                     //echo "<li><form action='grouppage.php' method='post'><input type='submit' name='groupname' value='$oneGroup[0]'/></form></li>"; 
                                     echo "<li><form action='grouppage.php' method='post'>
                                         <input style='display:none' name='gname' value='$oneGroup[0]'/>
-                                        <a style='color:white;margin-left:30px;' href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">$oneGroup[0]</a>
+                                        <a href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">$oneGroup[0]</a>
                                     </form></li>";
                                 }
                             ?>                        
@@ -130,7 +131,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                SB+ <small>Profile Page</small>
+                                SB+ <small>Change Password</small>
                             </h1>
                         </div>
                     </div>
@@ -145,64 +146,41 @@
                         </div>
                     </div>
                     <!-- /.row -->
-                    <?php 
-                        $user=$_SESSION['login_user'];
-                        $servername = "localhost";
-                        $d_username = "root";
-                        $d_password = "";
-                        $db_name = "studybuddyplus";
-                        $db_handle = new PDO("mysql:host=$servername;dbname=$db_name", "$d_username", "$d_password");
-                        $search_stmt = $db_handle->prepare("SELECT * FROM login WHERE username=?;");
-                        $search_stmt->bindParam(1, $user);
-                        $search_stmt->execute();
-                        $userinfo = $search_stmt->fetchAll();
-                        $firstname = $userinfo[0]['firstname'];
-                        $lastname = $userinfo[0]['lastname'];
-                        $count_stmt = $db_handle->prepare("SELECT COUNT(*) FROM posts WHERE student=?;");
-                        $count_stmt->bindParam(1, $user);
-                        $count_stmt->execute();
-                        $count = $count_stmt->fetchAll();
-                        $groups = getGroup($user);
-                    ?>
                     <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Your Information</h3>
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Change Password</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-fw fa-user"></i> Username: <?php echo $userinfo[0]['username']; ?>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-fw fa-male"></i> Your real name: <?php echo "$firstname $lastname"; ?>
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-fw fa-comment"></i> Comments Posted: <?php echo $count[0][0];?>
-                                    </a>
+									<form action="" method="post">
+										<div><?php
+												echo $error;
+											  ?>
+										</div>
+					
+										<div class="form-group col-md-12">                    
+											<label>Old Password</label>
+											<input id="old_password" name="old_password" class="form-control" placeholder="Enter your old password" required>
+										</div>
+										<div class="form-group col-md-12">                    
+											<label>Password</label>
+											<input id="password" name="password" type="password" class="form-control" placeholder="Enter a new password" required>
+										</div>
+										<div class="form-group col-md-12">                    
+											<label>Please confirm your password</label>
+											<input id="password2" name="password2" type="password" class="form-control" placeholder="Enter the same password again" required>
+										</div>
+										<div class="form-group col-md-12">
+											<input name="submit" type="submit" value="Change Password" class="btn btn-success">
+										</div>
+									</form>
                                 </div>
-                                <div class="text-right">
-                                    <a href="#">Change Password <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
+       
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-group fa-fw"></i>Your Groups</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="list-group">
-                                    <?php
-                                    foreach ($groups as $onegroup) {
-                                        echo "<a href='#' class='list-group-item'><i class='fa fa-fw fa-check-square-o'></i>$onegroup[0]</a>";
-                                    }
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <!-- /.container-fluid -->
 
