@@ -181,21 +181,16 @@
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-fw fa-check-square-o"></i>GROUP 1
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-fw fa-check-square-o"></i>GROUP 2
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-fw fa-check-square-o"></i>GROUP 3
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-fw fa-check-square-o"></i>GROUP 4
-                                    </a>
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-fw fa-check-square-o"></i>GROUP 5
-                                    </a>
+                                    <?php 
+                                        foreach($data as $oneGroup) {
+
+                                            echo "<form action='grouppage.php' method='post'>
+                                            <input style='display:none' name='gname' value='$oneGroup[0]'/>
+                                            <a href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\" class='list-group-item'> <i class='fa'></i>
+                                            $oneGroup[0]</a>
+                                            </form></li>";
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>
