@@ -7,11 +7,11 @@
 	$error=''; // Variable To Store Error Message
 	if (isset($_POST['submit'])) {
 		if (strlen($_POST['password']) < 8){
-			$error = "Password length has to be 8 characters or more";
+			$error = "<p class='alert alert-danger'>Password length has to be 8 characters or more</p>";
 		}else if (substr($_POST['email'],-4) != '.edu') {
-			$error = "Email has to be an .edu";
+			$error = "<p class='alert alert-danger'>Email must be .edu</p>";
 		}else if($_POST['password'] !== $_POST['password2']){
-			$error = "Passwords do not match";
+			$error = "<p class='alert alert-danger'>Passwords do not match</p>";
 		}else {
 			// Define $username and $password
 			$username = $_POST['username'];
@@ -32,12 +32,12 @@
 			$query = mysql_query("SELECT * FROM login WHERE username='$username'", $connection);
 
 			if (mysql_num_rows($query) == 1) {
-				$error = "username is taken.";
+				$error = "<p class='alert alert-warning'>This username is already in use :(</p>";
 			}else {
 				// SQL query to insert information of user.
 				$query = mysql_query("INSERT INTO `login`(`username`,`password`,`salt`,`firstname`,`lastname`,`email`)
 									VALUES('$username','$password','$salt','$firstname','$lastname','$email') ", $connection);
-				$error = "You have registered successfully.";
+				$error = "<p class='alert alert-success'>You have registered successfully!</p>";
 
 			}
 			mysql_close($connection); // Closing Connection
