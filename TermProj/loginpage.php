@@ -106,7 +106,7 @@
                         <input name="submit" type="submit" value=" Login" class="btn btn-success"><!--Login</button-->
                         <div>
                             <button type="button" class="btn btn-link">Forget Your Password?</button>
-                            <button onclick="location.href='registration.html';" type="button" class="btn btn-link">Register</button>
+                            <button onclick="location.href='registration.php';" type="button" class="btn btn-link">Register</button>
                         </div>
                         <!--</div>-->
                     </form>
