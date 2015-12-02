@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                SB+ <small>Registration</small>
+                                StudyBuddy+ <small>Registration</small>
                             </h1>
                         </div>
                     </div>
