@@ -1,7 +1,7 @@
 <?php
 	$servername = "localhost";
 	$d_username = "root";
-	$d_password = "a38/cs*9";
+	$d_password = "";
 	$db_name = "studybuddyplus";
 
 	$error=''; // Variable To Store Error Message
@@ -38,10 +38,10 @@
 				$query = mysql_query("INSERT INTO `login`(`username`,`password`,`salt`,`firstname`,`lastname`,`email`)
 									VALUES('$username','$password','$salt','$firstname','$lastname','$email') ", $connection);
 				$error = "<p class='alert alert-success'>You have registered successfully!</p>";
+				header('Location: loginpage.php'); // Redirecting To login page	
 
 			}
-			mysql_close($connection); // Closing Connection
-			header('Location: loginpage.php'); // Redirecting To login page
+			mysql_close($connection); // Closing Connection				
 		}
 	}
 
