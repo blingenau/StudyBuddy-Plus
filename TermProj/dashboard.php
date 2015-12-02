@@ -115,7 +115,7 @@
                             //echo "<li><form action='grouppage.php' method='post'><input type='submit' name='groupname' value='$oneGroup[0]'/></form></li>"; 
                             echo "<li><form action='grouppage.php' method='post'>
                                 <input style='display:none' name='gname' value='$oneGroup[0]'/>
-                                <a href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">$oneGroup[0]</a>
+                                <a style='color:white;margin-left:30px;' href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">$oneGroup[0]</a>
                             </form></li>";
                         }
                         ?>
@@ -248,22 +248,19 @@
                         foreach($data as $oneGroup) {
                             echo "<h4> In " . $oneGroup['groupName'] . "<h4/>";
                             echo "<ul>";
-                            $posts = getPostsByGroup_latest3($oneGroup['groupName']);
-                            /*foreach($posts as $oneEntry) {
-                                if ($oneEntry != null) {
-                                    echo "<li>" . $oneEntry['student'] . " said: " . $oneEntry['comment'] . " at " . $oneEntry['time'] . "</li>";
-                                } else {
-                                    echo "<li>Ooops... no more updates from the group</li>";
-                                    break;
-                                }
-                            }*/
-                            for ($i = count($posts)-1; $i > count($posts)-4; $i--) {
-                                if ($posts[$i] != null) {
+                            $posts = getPostsByGroup($oneGroup['groupName']);
+                            if (count($posts) > 3) {
+                                for ($i = count($posts)-1; $i > count($posts)-4; $i--) {
                                     echo "<li>" . $posts[$i]['student'] . " said: " . $posts[$i]['comment'] . " at " . $posts[$i]['time'] . "</li>";
-                                } else {
-                                    echo "<li>Ooops... no more updates from the group</li>";
-                                    break;
+                                
                                 }
+                            } elseif (count($posts) > 0){
+                                for ($i = 0; $i < count($posts); $i++) {
+                                    echo "<li>" . $posts[$i]['student'] . " said: " . $posts[$i]['comment'] . " at " . $posts[$i]['time'] . "</li>";
+                                }
+                            } else {
+                                echo "<li>Ooops... no updates from the group</li>";
+                                break;
                             }
                             echo "</ul>";
                             echo "<div class='text-right'>
@@ -283,46 +280,18 @@
             <div class="col-lg-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>CLASS PLACEHOLDER</h3>
+                        <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Group Searcher</h3>
                     </div>
                     <div class="panel-body">
-                        <div class="list-group">
-                            <a href="#" class="list-group-item">
-                                <span class="badge">just now</span>
-                                <i class="fa fa-fw fa-calendar"></i> Calendar updated
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">4 minutes ago</span>
-                                <i class="fa fa-fw fa-comment"></i> Commented on a post
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">23 minutes ago</span>
-                                <i class="fa fa-fw fa-truck"></i> Order 392 shipped
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">46 minutes ago</span>
-                                <i class="fa fa-fw fa-money"></i> Invoice 653 has been paid
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">1 hour ago</span>
-                                <i class="fa fa-fw fa-user"></i> A new user has been added
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">2 hours ago</span>
-                                <i class="fa fa-fw fa-check"></i> Completed task: "pick up dry cleaning"
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">yesterday</span>
-                                <i class="fa fa-fw fa-globe"></i> Saved the world
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">two days ago</span>
-                                <i class="fa fa-fw fa-check"></i> Completed task: "fix error on sales page"
-                            </a>
-                        </div>
-                        <div class="text-right">
-                            <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
+                        <form action="grouppage.php" method="post">
+                            <div class="list-group">
+                                <input style="display:none" name="gname" type="text" value="<?php echo $group?>"/>
+                                <input style="width:80%" name="comment" type="text" placeholder="enter the group name here"/>
+                            </div>
+                            <div class="text-right">
+                                <input name="send" type="submit" value="search"/>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
