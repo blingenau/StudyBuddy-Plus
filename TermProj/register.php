@@ -1,7 +1,7 @@
 <?php
 	$servername = "localhost";
 	$d_username = "root";
-	$d_password = "";
+	$d_password = "a38/cs*9";
 	$db_name = "studybuddyplus";
 
 	$error=''; // Variable To Store Error Message
