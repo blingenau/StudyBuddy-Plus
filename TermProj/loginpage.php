@@ -1,7 +1,7 @@
 <?php
 	include('login.php'); //includes login script
 	if(isset($_SESSION['login_user'])) {
-		header("location: studybuddyplus.php"); //if successful login redirects to studybuddyplus.php
+		header("location: dashboard.php"); //if successful login redirects to studybuddyplus.php
 	}
 ?>
 <!DOCTYPE html>
