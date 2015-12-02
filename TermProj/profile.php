@@ -1,5 +1,6 @@
 <?php
     include 'session.php';
+    include('getGroup.php');
 ?>
 
 <!DOCTYPE html>
@@ -72,12 +73,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> 
-                        <?php 
-                            if(isset($_SESSION['login_user']))
-                                echo $login_session; 
-                        ?> 
-                        <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $login_session; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -92,6 +88,9 @@
                     </ul>
                 </li>
             </ul>
+            <?php 
+                $data = getGroup($_SESSION["login_user"]);
+            ?>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
@@ -100,17 +99,20 @@
                     </li>
                     <li>
                         <a href="javascript:" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> My Groups <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Group 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Group 2</a>
-                            </li>
+                        <ul id="demo" class="collapse">                       
+                            <?php 
+                                foreach($data as $oneGroup) {
+                                    //echo "<li><form action='grouppage.php' method='post'><input type='submit' name='groupname' value='$oneGroup[0]'/></form></li>"; 
+                                    echo "<li><form action='grouppage.php' method='post'>
+                                        <input style='display:none' name='gname' value='$oneGroup[0]'/>
+                                        <a href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">$oneGroup[0]</a>
+                                    </form></li>";
+                                }
+                            ?>                        
                         </ul>
                     </li>
                     <li>
-                        <a href="create_group.html"><i class="fa fa-fw fa-edit"></i> Create Group</a>
+                        <a href="create_group.php"><i class="fa fa-fw fa-edit"></i> Create Group</a>
                     </li>
                     <li>
                         <a href="calendar.html"><i class="fa fa-fw fa-table"></i>My Calendar</a>

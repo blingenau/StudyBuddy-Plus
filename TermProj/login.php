@@ -39,7 +39,7 @@
 
 			if ($rows == 1) {
 				$_SESSION['login_user']=$username; // Initializing Session
-				header("location: studybuddyplus.php"); // Redirecting To Other Page
+				header("location: dashboard.php"); // Redirecting To Other Page
 			} else {
 				$error = "Username or Password is invalid";
 			}
