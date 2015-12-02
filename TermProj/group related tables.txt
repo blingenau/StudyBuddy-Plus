@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS `posts` (
+  `student` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `groupName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `comment` text COLLATE utf8_unicode_ci NOT NULL,
+  `time` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `members` (
+  `student` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `groupName` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `groups` (
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `courseNum` int(4) NOT NULL,
+  `descr` text COLLATE utf8_unicode_ci NOT NULL,
+  `creator` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `time` date NOT NULL,
+  `level` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
