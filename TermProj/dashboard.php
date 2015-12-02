@@ -1,3 +1,7 @@
+<?php
+	include('session.php');
+    include('getGroup.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Study Buddy+ | [GROUP TITLE]</title>
+    <title>Study Buddy+ | My Dashboard</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -76,7 +80,7 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['login_user']; ?> <b
                         class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
@@ -87,31 +91,39 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                     </li>
                 </ul>
             </li>
         </ul>
+        <?php 
+            $data = getGroup($_SESSION["login_user"]);
+        ?>
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li class="active">
-                    <a href="dashboard.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <a href="dashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="javascript:" data-toggle="collapse" data-target="#demo"><i
                             class="fa fa-fw fa-arrows-v"></i> My Groups <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo" class="collapse">
-                        <li>
-                            <a href="#">Group 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Group 2</a>
-                        </li>
+                       
+                        <?php 
+                        foreach($data as $oneGroup) {
+                            //echo "<li><form action='grouppage.php' method='post'><input type='submit' name='groupname' value='$oneGroup[0]'/></form></li>"; 
+                            echo "<li><form action='grouppage.php' method='post'>
+                                <input style='display:none' name='gname' value='$oneGroup[0]'/>
+                                <a href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">$oneGroup[0]</a>
+                            </form></li>";
+                        }
+                        ?>
+                        
                     </ul>
                 </li>
                 <li>
-                    <a href="create_group.html"><i class="fa fa-fw fa-edit"></i> Create Group</a>
+                    <a href="create_group.php"><i class="fa fa-fw fa-edit"></i> Create Group</a>
                 </li>
                 <li>
                     <a href="calendar.html"><i class="fa fa-fw fa-table"></i>My Calendar</a>
@@ -129,7 +141,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        [GROUP TITLE]
+                        Dashboard
                         <small>Recent Activity</small>
                     </h1>
                     <ol class="breadcrumb">
@@ -147,6 +159,78 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <i class="fa fa-info-circle"></i>  <strong>Welcome!</strong> This is your main study feed. Here you can find the most recent updates for your different study groups.
                     </div>
+                    <?php 
+                    $posts_count = 0;
+                    foreach($data as $oneGroup) {
+                        $_SESSION[$oneGroup['groupName']] = true; //mark in session which group the student belongs to
+                        $posts = getPostsByGroup($oneGroup['groupName']); //get all the group names the user belongs to
+                        $posts_count += count($posts);
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-comments fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge"><?php echo $posts_count; ?></div>
+                                <div>Posts in all your groups!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-tasks fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge"><?php echo count($data) ?></div>
+                                <div>Study Groups!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-book fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">13</div>
+                                <div>Assignments due this week!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-pencil-square fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">5</div>
+                                <div>Tests the week!</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,13 +240,43 @@
             <div class="col-lg-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i>CLASS PLACEHOLDER</h3>
+                        <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i>Latest Posts</h3>
                     </div>
                     <div class="panel-body">
-                        <div id="morris-donut-chart"></div>
-                        <div class="text-right">
-                            <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                        <div id="morris-donut-chart">
+                        <?php 
+                        foreach($data as $oneGroup) {
+                            echo "<h4> In " . $oneGroup['groupName'] . "<h4/>";
+                            echo "<ul>";
+                            $posts = getPostsByGroup_latest3($oneGroup['groupName']);
+                            /*foreach($posts as $oneEntry) {
+                                if ($oneEntry != null) {
+                                    echo "<li>" . $oneEntry['student'] . " said: " . $oneEntry['comment'] . " at " . $oneEntry['time'] . "</li>";
+                                } else {
+                                    echo "<li>Ooops... no more updates from the group</li>";
+                                    break;
+                                }
+                            }*/
+                            for ($i = count($posts)-1; $i > count($posts)-4; $i--) {
+                                if ($posts[$i] != null) {
+                                    echo "<li>" . $posts[$i]['student'] . " said: " . $posts[$i]['comment'] . " at " . $posts[$i]['time'] . "</li>";
+                                } else {
+                                    echo "<li>Ooops... no more updates from the group</li>";
+                                    break;
+                                }
+                            }
+                            echo "</ul>";
+                            echo "<div class='text-right'>
+                                <form action='grouppage.php' method='post' id='$oneGroup[0]'>
+                                    <input style='display:none' name='gname' value='$oneGroup[0]'/>
+                                    <a href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">View Details<i class='fa fa-arrow-circle-right'></i></a>
+                                </form>
+                            </div>";
+                            //echo '<div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div>';
+                        }
+                        ?>
                         </div>
+                       
                     </div>
                 </div>
             </div>
