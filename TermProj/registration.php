@@ -142,7 +142,8 @@
                         <input name="submit" type="submit" value="Create Account" class="btn btn-success">
                         <br/>
                         <p>Already have an account?</p>
-                        <a href="loginpage.php" class="btn btn-primary" role="button"> Log In</a>
+                        <a href="loginpage.php" class="btn btn-primary" role="button">Log In</a>
+                        <br/>
                         <!--</div>-->
                     </form>
                 </div>
