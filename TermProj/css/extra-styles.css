@@ -1,3 +1,8 @@
 .outline{
 	-webkit-text-stroke: .75px black;
 }
+
+.box{
+	background-color: rgba(50,50,50,.3);
+	border-radius: 6px;
+}
