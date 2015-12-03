@@ -203,36 +203,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-yellow">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-book fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">13</div>
-                                <div>Assignments due this week!</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-red">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-pencil-square fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">5</div>
-                                <div>Tests the week!</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <!-- /.row -->
 
@@ -283,19 +253,22 @@
                         <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Group Searcher</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="grouppage.php" method="post">
+                        <form action="dashboard.php" method="post">
                             <div class="list-group">
-                                <input style="display:none" name="gname" type="text" value="<?php echo $group?>"/>
-                                <input style="width:80%" name="comment" type="text" placeholder="enter the group name here"/>
+                                Search by group name or course number
+                                <input style="width:80%" name="gName" type="text" placeholder="enter group name"/>
+                                <input style="width:80%" name="cNum" type="text" placeholder="enter course number"/>
                             </div>
                             <div class="text-right">
                                 <input name="send" type="submit" value="search"/>
                             </div>
+                            <?php 
+                                
+                            ?>
                         </form>
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- /.row -->
 
