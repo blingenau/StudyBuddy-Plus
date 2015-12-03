@@ -21,18 +21,8 @@
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -96,8 +86,8 @@
                 </ul>
             </li>
         </ul>
-        <?php 
-            $data = getGroup($_SESSION["login_user"]);
+        <?php
+        $data = getGroup($_SESSION["login_user"]);
         ?>
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -109,17 +99,17 @@
                     <a href="javascript:" data-toggle="collapse" data-target="#demo"><i
                             class="fa fa-fw fa-arrows-v"></i> My Groups <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo" class="collapse">
-                       
-                        <?php 
+
+                        <?php
                         foreach($data as $oneGroup) {
-                            //echo "<li><form action='grouppage.php' method='post'><input type='submit' name='groupname' value='$oneGroup[0]'/></form></li>"; 
+                            //echo "<li><form action='grouppage.php' method='post'><input type='submit' name='groupname' value='$oneGroup[0]'/></form></li>";
                             echo "<li><form action='grouppage.php' method='post'>
-                                <input style='display:none' name='gname' value='$oneGroup[0]'/>
-                                <a style='color:white;margin-left:30px;' href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">$oneGroup[0]</a>
-                            </form></li>";
+                        <input style='display:none' name='gname' value='$oneGroup[0]'/>
+                        <a style='color:white;margin-left:30px;' href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">$oneGroup[0]</a>
+                    </form></li>";
                         }
                         ?>
-                        
+
                     </ul>
                 </li>
                 <li>
@@ -159,7 +149,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <i class="fa fa-info-circle"></i>  <strong>Welcome!</strong> This is your main study feed. Here you can find the most recent updates for your different study groups.
                     </div>
-                    <?php 
+                    <?php
                     $posts_count = 0;
                     foreach($data as $oneGroup) {
                         $_SESSION[$oneGroup['groupName']] = true; //mark in session which group the student belongs to
@@ -173,7 +163,7 @@
         <!-- /.row -->
 
         <div class="row">
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-5 col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="row">
@@ -188,7 +178,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-5 col-md-6">
                 <div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
@@ -213,8 +203,7 @@
                         <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i>Latest Posts</h3>
                     </div>
                     <div class="panel-body">
-                        <div id="morris-donut-chart">
-                        <?php 
+                        <?php
                         foreach($data as $oneGroup) {
                             echo "<h4> In " . $oneGroup['groupName'] . "<h4/>";
                             echo "<ul>";
@@ -222,7 +211,7 @@
                             if (count($posts) > 3) {
                                 for ($i = count($posts)-1; $i > count($posts)-4; $i--) {
                                     echo "<li>" . $posts[$i]['student'] . " said: " . $posts[$i]['comment'] . " at " . $posts[$i]['time'] . "</li>";
-                                
+
                                 }
                             } elseif (count($posts) > 0){
                                 for ($i = 0; $i < count($posts); $i++) {
@@ -234,16 +223,15 @@
                             }
                             echo "</ul>";
                             echo "<div class='text-right'>
-                                <form action='grouppage.php' method='post' id='$oneGroup[0]'>
-                                    <input style='display:none' name='gname' value='$oneGroup[0]'/>
-                                    <a href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">View Details<i class='fa fa-arrow-circle-right'></i></a>
-                                </form>
-                            </div>";
+                            <form action='grouppage.php' method='post' id='$oneGroup[0]'>
+                                <input style='display:none' name='gname' value='$oneGroup[0]'/>
+                                <a href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">View Details<i class='fa fa-arrow-circle-right'></i></a>
+                            </form>
+                        </div>";
                             //echo '<div class="text-right"><a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a></div>';
                         }
                         ?>
-                        </div>
-                       
+
                     </div>
                 </div>
             </div>
@@ -262,8 +250,8 @@
                             <div class="text-right">
                                 <input name="send" type="submit" value="search"/>
                             </div>
-                            <?php 
-                                
+                            <?php
+
                             ?>
                         </form>
                     </div>
@@ -278,8 +266,6 @@
 </div>
 <!-- /#page-wrapper -->
 
-</div>
-<!-- /#wrapper -->
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
