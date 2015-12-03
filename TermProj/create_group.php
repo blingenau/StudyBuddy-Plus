@@ -157,8 +157,13 @@
                                 print_r($e->getMessage());
                             }
                             if (isset($mess) && $mess) {
-                                echo "<h3>Group Created</h3>";
-                                echo "<p>Redirect to login page in three second......</p>"; 
+                                echo "<div class=\"col-lg-12\">
+                            <div class=\"alert alert-success alert-dismissable\">
+                                <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>
+                                <i class=\"fa fa-info-circle\"></i>  <strong>SUCCESS!!</strong>  Your group was created.
+                            </div>
+                        </div>";
+                                echo "<p>You will be redirected to your dashboard shortly....</p>";
                                 echo "<meta http-equiv='refresh' content='3;url=dashboard.php'>";    
                                 exit;
                             } 
