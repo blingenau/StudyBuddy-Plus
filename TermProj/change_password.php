@@ -152,7 +152,7 @@
 					
 										<div class="form-group col-md-12">                    
 											<label>Old Password</label>
-											<input id="old_password" name="old_password" class="form-control" placeholder="Enter your old password" required>
+											<input id="old_password" name="old_password" type="password" class="form-control" placeholder="Enter your old password" required>
 										</div>
 										<div class="form-group col-md-12">                    
 											<label>Password</label>
