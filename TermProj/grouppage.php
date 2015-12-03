@@ -189,8 +189,8 @@
         <?php 
             //script for insert posts into databases
             if (isset($_POST['send']) && $_POST['send'] == 'send') {
-                $servername = "localhost";
-                $d_username = "root";
+                $servername = "104.236.200.134";
+                $d_username = "buddy";
                 $d_password = "";
                 $db_name = "studybuddyplus";
                 $db_handle = new PDO("mysql:host=$servername;dbname=$db_name", "$d_username", "$d_password");
@@ -256,8 +256,8 @@
             </div>
             <?php
                 //script to verify if the login user is the creator
-                $servername = "localhost";
-                $d_username = "root";
+                $servername = "104.236.200.134";
+                $d_username = "buddy";
                 $d_password = "";
                 $db_name = "studybuddyplus";
                 $db_handle = new PDO("mysql:host=$servername;dbname=$db_name", "$d_username", "$d_password");
