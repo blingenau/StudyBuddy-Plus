@@ -1,6 +1,6 @@
 <?php
-	$servername = "localhost";
-	$d_username = "root";
+	$servername = "104.236.200.134";
+	$d_username = "buddy";
 	$d_password = "";
 	$db_name = "studybuddyplus";
 

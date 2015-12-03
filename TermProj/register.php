@@ -1,6 +1,6 @@
 <?php
-	$servername = "localhost";
-	$d_username = "root";
+	$servername = "104.236.200.134";
+	$d_username = "buddy";
 	$d_password = "";
 	$db_name = "studybuddyplus";
 
@@ -25,7 +25,7 @@
 			$password = hash('sha256', $salt . $password);
 
 			// Establishing Connection with Server by passing servername, d_username and d_password as a parameter
-			$connection = mysql_connect("$servername", "$d_username", "$d_password");
+			$connection = mysql_connect("$servername", "$d_username", "$d_password") or die(mysql_error());
 
 			// Selecting Database
 			$db = mysql_select_db("$db_name", $connection);
