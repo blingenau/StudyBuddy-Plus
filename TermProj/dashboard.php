@@ -93,7 +93,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li class="active">
-                    <a href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <a href="dashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
                     <a href="javascript:" data-toggle="collapse" data-target="#demo"><i
@@ -243,15 +243,58 @@
                     <div class="panel-body">
                         <form action="dashboard.php" method="post">
                             <div class="list-group">
-                                Search by group name or course number
-                                <input style="width:80%" name="gName" type="text" placeholder="enter group name"/>
-                                <input style="width:80%" name="cNum" type="text" placeholder="enter course number"/>
+                                <?php 
+                                    //script for class search
+                                    $servername = "localhost";
+                                    $d_username = "root";
+                                    $d_password = "";
+                                    $db_name = "studybuddyplus";
+                                    if (isset($_POST['send']) && $_POST['send'] == "search") {
+                                        // Establishing Connection with Server by passing servername, d_username and d_password as a parameter
+                                        $connection = mysql_connect("$servername", "$d_username", "$d_password");
+                                        $name = $_POST['keyword'];
+                                        // Selecting Database
+                                        $db = mysql_select_db("$db_name", $connection);
+                                        //$query = mysql_query("SELECT * FROM login WHERE username='$username'", $connection);
+                                        $sql="SELECT name, courseNum, descr FROM groups WHERE 
+                                            name LIKE '%" . $name . "%' OR courseNum LIKE '%" . $name . "%' OR descr LIKE '%" . $name . "%'";
+                                        $query = mysql_query($sql,$connection);
+                                        //$query = mysql_fetch_assoc($query);
+                                        $result = mysql_fetch_array($query);
+                                        mysql_close($connection); // Closing Connection	
+	                                }
+                                ?>
+                                Enter group name or course number to search a group
+                                <input style="width:80%" name="keyword" type="text" placeholder="enter keyword for search here"/>
                             </div>
                             <div class="text-right">
                                 <input name="send" type="submit" value="search"/>
                             </div>
                             <?php
-
+                                if (isset($_POST['send']) && $_POST['send'] == "search") {
+                                    if (!empty($result)) {
+                                       // print_r ($result);
+                                        $name = $result[0];
+                                        $cNum = $result[1];
+                                        $descr = $result[2];
+                                        echo "<p>-Group name: $name Course Number: $cNum Description: $descr</p>";
+                                        echo "<form action='dashboard.php' method='post'>
+                                                    <input style='display:none' name='target_group' type='text' value='$name'/>
+                                                    <input name='add' type='submit' value='add to the group'/>
+                                              </form>";
+                                    } else {
+                                        echo "<h4>No Group Found accoding to the keyword</h4>";
+                                    }
+                                }
+                                if (isset($_POST['add']) && $_POST['add'] == "add to the group") {
+                                    $db_handle = new PDO("mysql:host=$servername;dbname=$db_name", "$d_username", "$d_password");
+                                    $insert_stmt = $db_handle->prepare("INSERT INTO `members`(`student`,`groupName`) VALUES(?,?)");
+                                    $insert_stmt->bindParam(1, $_SESSION['login_user']);
+                                    $insert_stmt->bindParam(2, $_POST['target_group']);
+                                    $insert_stmt->execute();
+                                    $success = $insert_stmt->fetchAll();
+                                    echo "<h4>Group Added!</h4>";
+                                }
                             ?>
                         </form>
                     </div>
