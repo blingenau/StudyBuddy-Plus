@@ -38,7 +38,7 @@
 				
 				$query = mysql_query("UPDATE login SET password='$password', salt='$salt' WHERE username='$username' ", $connection);
 				
-				$error = "<p class='alert alert-success'>You have registered successfully!</p>";
+				$error = "<p class='alert alert-success'>Your password has been changed!</p>";
 				
 			}
 			
