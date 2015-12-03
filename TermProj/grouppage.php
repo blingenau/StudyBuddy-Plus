@@ -31,8 +31,18 @@
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 
@@ -50,7 +60,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">StudyBuddy+</a>
+            <a class="navbar-brand" href="dashboard.php">StudyBuddy+</a>
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
@@ -84,7 +94,7 @@
                         class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
@@ -102,10 +112,10 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-                <li class="active">
+                <li>
                     <a href="dashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="javascript:" data-toggle="collapse" data-target="#demo"><i
                             class="fa fa-fw fa-arrows-v"></i> My Groups <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo" class="collapse">
@@ -115,7 +125,7 @@
                             //echo "<li><form action='grouppage.php' method='post'><input type='submit' name='groupname' value='$oneGroup[0]'/></form></li>"; 
                             echo "<li><form action='grouppage.php' method='post'>
                                 <input style='display:none' name='gname' value='$oneGroup[0]'/>
-                                <a href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">$oneGroup[0]</a>
+                                <a style='color:white;margin-left:30px;' href='grouppage.php' onclick=\"this.parentNode.submit(); return false;\">$oneGroup[0]</a>
                             </form></li>";
                         }
                         ?>
@@ -144,7 +154,18 @@
                         <?php echo $_POST['gname']; 
                             $groupinfo = getGroupInfoByName($group);
                         ?>
-                        <small><?php echo ("Group Created at " . $groupinfo[0]['time']) ?></small>
+                        <small>
+                        <?php 
+                            if ($groupinfo[0]['level'] == 1) {
+                                $groupType = "Official Class Group";
+                            } elseif ($groupinfo[0]['level'] == 2) {
+                                $groupType = "Normal Study Group";
+                            } else {
+                                $groupType = "Group Project";
+                            }
+                            echo ( $groupType ." (created at " . $groupinfo[0]['time'] . ")");
+                        ?>
+                        </small>
                     </h1>
                     <ol class="breadcrumb">
                         <li class="active">
@@ -159,7 +180,7 @@
                 <div class="col-lg-12">
                     <div class="alert alert-info alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <i class="fa fa-info-circle"></i>  <strong>Welcome!</strong> This is your main study feed. Here you can find the most recent updates for your different study groups.
+                        <i class="fa fa-info-circle"></i>  <strong>Welcome!</strong> This is a study group page.
                     </div>
                 </div>
             </div>
@@ -168,8 +189,8 @@
         <?php 
             //script for insert posts into databases
             if (isset($_POST['send']) && $_POST['send'] == 'send') {
-                $servername = "localhost";
-                $d_username = "root";
+                $servername = "104.236.200.134";
+                $d_username = "buddy";
                 $d_password = "";
                 $db_name = "studybuddyplus";
                 $db_handle = new PDO("mysql:host=$servername;dbname=$db_name", "$d_username", "$d_password");
@@ -219,140 +240,89 @@
                         <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i>Discussion Board</h3>
                     </div>
                     <div class="panel-body">
+                        <div id="morris-donut-chart">
                         <?php 
                         $allPosts = getPostsByGroup($group);
-                        //print_r ($allPosts);
-                        
                         foreach($allPosts as $onePost) {
                             //print_r ($onePost);
-                            echo "<li>$onePost[0] said: $onePost[2] at $onePost[3].</li>";
+                            echo "<li>$onePost[0] said: $onePost[2] at <span class='badge'>$onePost[3]</span></li>";
                         }
                         
                         ?>
+                        </div>
                        
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>CLASS PLACEHOLDER</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <a href="#" class="list-group-item">
-                                <span class="badge">just now</span>
-                                <i class="fa fa-fw fa-calendar"></i> Calendar updated
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">4 minutes ago</span>
-                                <i class="fa fa-fw fa-comment"></i> Commented on a post
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">23 minutes ago</span>
-                                <i class="fa fa-fw fa-truck"></i> Order 392 shipped
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">46 minutes ago</span>
-                                <i class="fa fa-fw fa-money"></i> Invoice 653 has been paid
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">1 hour ago</span>
-                                <i class="fa fa-fw fa-user"></i> A new user has been added
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">2 hours ago</span>
-                                <i class="fa fa-fw fa-check"></i> Completed task: "pick up dry cleaning"
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">yesterday</span>
-                                <i class="fa fa-fw fa-globe"></i> Saved the world
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">two days ago</span>
-                                <i class="fa fa-fw fa-check"></i> Completed task: "fix error on sales page"
-                            </a>
+            <?php
+                //script to verify if the login user is the creator
+                $servername = "104.236.200.134";
+                $d_username = "buddy";
+                $d_password = "";
+                $db_name = "studybuddyplus";
+                $db_handle = new PDO("mysql:host=$servername;dbname=$db_name", "$d_username", "$d_password");
+                $search_stmt = $db_handle->prepare("SELECT `creator` FROM groups WHERE name=?;");
+                $search_stmt->bindParam(1, $group);
+                $search_stmt->execute();
+                $creator = $search_stmt->fetchAll();
+                $admin = $creator[0][0];
+                if ($admin == $_SESSION['login_user']) {
+                    echo '<div class="col-lg-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Add a Group Member</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form action="grouppage.php" method="post">
+                                        <div class="list-group">
+                                            Enter username, first name, or last name to search for a user
+                                            <input style="display:none" name="gname" value="'.$oneGroup[0].'"/>
+                                            <input style="width:80%" name="keyword" type="text" placeholder="enter keyword to search a user here"/>
+                                        </div>
+                                        <div class="text-right">
+                                            <input name="send" type="submit" value="search user"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-right">
-                            <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>CLASS PLACEHOLDER</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Order #</th>
-                                    <th>Order Date</th>
-                                    <th>Order Time</th>
-                                    <th>Amount (USD)</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>3326</td>
-                                    <td>10/21/2013</td>
-                                    <td>3:29 PM</td>
-                                    <td>$321.33</td>
-                                </tr>
-                                <tr>
-                                    <td>3325</td>
-                                    <td>10/21/2013</td>
-                                    <td>3:20 PM</td>
-                                    <td>$234.34</td>
-                                </tr>
-                                <tr>
-                                    <td>3324</td>
-                                    <td>10/21/2013</td>
-                                    <td>3:03 PM</td>
-                                    <td>$724.17</td>
-                                </tr>
-                                <tr>
-                                    <td>3323</td>
-                                    <td>10/21/2013</td>
-                                    <td>3:00 PM</td>
-                                    <td>$23.71</td>
-                                </tr>
-                                <tr>
-                                    <td>3322</td>
-                                    <td>10/21/2013</td>
-                                    <td>2:49 PM</td>
-                                    <td>$8345.23</td>
-                                </tr>
-                                <tr>
-                                    <td>3321</td>
-                                    <td>10/21/2013</td>
-                                    <td>2:23 PM</td>
-                                    <td>$245.12</td>
-                                </tr>
-                                <tr>
-                                    <td>3320</td>
-                                    <td>10/21/2013</td>
-                                    <td>2:15 PM</td>
-                                    <td>$5663.54</td>
-                                </tr>
-                                <tr>
-                                    <td>3319</td>
-                                    <td>10/21/2013</td>
-                                    <td>2:13 PM</td>
-                                    <td>$943.45</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="text-right">
-                            <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    ';
+                }
+                if (isset($_POST['send']) && $_POST['send'] == "search user") {
+                    // Establishing Connection with Server by passing servername, d_username and d_password as a parameter
+                    $connection = mysql_connect("$servername", "$d_username", "$d_password");
+                    $name = $_POST['keyword'];
+                    // Selecting Database
+                    $db = mysql_select_db("$db_name", $connection);
+                    //$query = mysql_query("SELECT * FROM login WHERE username='$username'", $connection);
+                    $sql="SELECT username, firstname, lastname FROM login WHERE 
+                        username LIKE '%" . $name . "%' OR firstname LIKE '%" . $name . "%' OR lastname LIKE '%" . $name . "%'";
+                    $query = mysql_query($sql,$connection);
+                    //$query = mysql_fetch_assoc($query);
+                    $result = mysql_fetch_array($query);
+                    $username = $result[0];
+                    $firstname = $result[1];
+                    $lastname = $result[2];
+                    echo "<h4 style='margin-left:2%'>Found User:$username True Name: $firstname $lastname</h4>";
+                    echo "<form action='grouppage.php' method='post' style='margin-left:2%'>
+                                <input style='display:none' name='gname' value='$oneGroup[0]'/>
+                                <input style='display:none' name='target_user' type='text' value='$username'/>
+                                <input name='add' type='submit' value='add user to the group'/>
+                          </form>";
+                    mysql_close($connection); // Closing Connection
+                }
+                if (isset($_POST['add']) && $_POST['add'] == "add user to the group") {
+                    $db_handle = new PDO("mysql:host=$servername;dbname=$db_name", "$d_username", "$d_password");
+                    $insert_stmt = $db_handle->prepare("INSERT INTO `members`(`student`,`groupName`) VALUES(?,?)");
+                    $insert_stmt->bindParam(1, $_POST['target_user']);
+                    $insert_stmt->bindParam(2, $_POST['gname']);
+                    $insert_stmt->execute();
+                    $success = $insert_stmt->fetchAll();
+                    echo "<h4 style='margin-left:2%'>Group Added!</h4>";
+                }
+            ?>
+            
+            
         </div>
         <!-- /.row -->
 
