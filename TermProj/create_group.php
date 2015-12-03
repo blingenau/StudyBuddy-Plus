@@ -23,9 +23,6 @@
         <!-- Custom CSS -->
         <link href="css/sb-admin.css" rel="stylesheet">
 
-        <!-- Morris Charts CSS -->
-        <link href="css/plugins/morris.css" rel="stylesheet">
-
         <!-- Custom Fonts -->
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -199,8 +196,8 @@
                                 <input type="radio" name="radio" id="optionsRadios3" value="option3">Group Project
                             </label>
                         </div>
-                        <button type="submit" name="submit" value="submit" class="btn btn-success">Submit Button</button>
-                        <button type="reset" class="btn btn-danger">Reset Button</button>
+                        <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
                         <!--</div>-->
                     </form>
                 </div>
