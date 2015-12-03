@@ -182,7 +182,7 @@
                                     </a>
                                 </div>
                                 <div class="text-right">
-                                    <a href="#">Change Password <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="change_password.php">Change Password <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
