@@ -112,10 +112,10 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-                <li class="active">
+                <li>
                     <a href="dashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="javascript:" data-toggle="collapse" data-target="#demo"><i
                             class="fa fa-fw fa-arrows-v"></i> My Groups <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo" class="collapse">
@@ -180,7 +180,7 @@
                 <div class="col-lg-12">
                     <div class="alert alert-info alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <i class="fa fa-info-circle"></i>  <strong>Welcome!</strong> This is your main study feed. Here you can find the most recent updates for your different study groups.
+                        <i class="fa fa-info-circle"></i>  <strong>Welcome!</strong> This is a study group page.
                     </div>
                 </div>
             </div>
@@ -275,7 +275,7 @@
                                 <div class="panel-body">
                                     <form action="grouppage.php" method="post">
                                         <div class="list-group">
-                                            Enter username/firstname/lastname to search a user
+                                            Enter username, first name, or last name to search for a user
                                             <input style="display:none" name="gname" value="'.$oneGroup[0].'"/>
                                             <input style="width:80%" name="keyword" type="text" placeholder="enter keyword to search a user here"/>
                                         </div>

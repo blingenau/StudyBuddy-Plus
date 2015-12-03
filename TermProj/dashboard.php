@@ -277,13 +277,13 @@
                                         $name = $result[0];
                                         $cNum = $result[1];
                                         $descr = $result[2];
-                                        echo "<p>-Group name: $name Course Number: $cNum Description: $descr</p>";
+                                        echo "<p>Group name: $name Course Number: $cNum Description: $descr</p>";
                                         echo "<form action='dashboard.php' method='post'>
                                                     <input style='display:none' name='target_group' type='text' value='$name'/>
                                                     <input name='add' type='submit' value='add to the group'/>
                                               </form>";
                                     } else {
-                                        echo "<h4>No Group Found accoding to the keyword</h4>";
+                                        echo "<h4>No Group Found using these keywords</h4>";
                                     }
                                 }
                                 if (isset($_POST['add']) && $_POST['add'] == "add to the group") {
