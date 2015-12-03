@@ -196,7 +196,7 @@
                                 <div class="list-group">
                                     <?php
                                     foreach ($groups as $onegroup) {
-                                        echo "<a href='#' class='list-group-item'><i class='fa fa-fw fa-check-square-o'></i>$onegroup[0]</a>";
+                                        echo "<a href='#' class='list-group-item'><i class='fa'></i>$onegroup[0]</a>";
                                     }
                                     ?>
                                 </div>
