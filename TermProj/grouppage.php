@@ -234,7 +234,7 @@
         </div>
         <!-- /.row -->
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i>Discussion Board</h3>
