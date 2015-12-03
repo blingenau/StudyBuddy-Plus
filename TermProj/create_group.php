@@ -199,8 +199,8 @@
                                 <input type="radio" name="radio" id="optionsRadios3" value="option3">Group Project
                             </label>
                         </div>
-                        <button type="submit" name="submit" value="submit" class="btn btn-success">Submit Button</button>
-                        <button type="reset" class="btn btn-danger">Reset Button</button>
+                        <button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
                         <!--</div>-->
                     </form>
                 </div>
