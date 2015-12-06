@@ -105,7 +105,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                SB+ <small>Create Group</small>
+                                StudyBuddy+ <small>Create Group</small>
                             </h1>
                         </div>
                     </div>

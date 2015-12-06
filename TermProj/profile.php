@@ -94,7 +94,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                SB+ <small>Profile Page</small>
+                                StudyBuddy+ <small>Profile Page</small>
                             </h1>
                         </div>
                     </div>
