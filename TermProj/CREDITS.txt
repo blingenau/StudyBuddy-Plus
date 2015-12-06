@@ -1,0 +1,9 @@
+Blake: Database hosting, Fixed issues with login PHP
+
+David: Frontend development, debugging, styling
+
+Graigor: Frontend development
+
+Julian: Backend development
+
+Lu: Search functionality, Backend development
