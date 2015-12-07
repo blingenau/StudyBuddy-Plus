@@ -1,5 +1,8 @@
 Blake: Database hosting, Fixed issues with login PHP
 
+Did a lot of bug checking/fixing. Configured the files to host the database on my
+cloud server. Previous MySQL experience was helpful. 
+
 ************************************************************************************************************************
 
 
