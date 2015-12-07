@@ -16,6 +16,9 @@ Helped debug some PHP and HTML issues
 
 Graigor: Frontend development
 
+Worked on some minor changes / debugging features after pages were pushed to the git
+created original template for profile page
+
 ************************************************************************************************************************
 
 
