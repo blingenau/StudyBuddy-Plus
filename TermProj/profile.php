@@ -18,7 +18,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="css/sb-admin.css" rel="stylesheet">
+        <link href="css/internal_style.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -40,37 +40,10 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Notice</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Answer</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Question</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Exam</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $login_session; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -121,7 +94,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                SB+ <small>Profile Page</small>
+                                StudyBuddy+ <small>Profile Page</small>
                             </h1>
                         </div>
                     </div>
@@ -158,7 +131,7 @@
                     <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Your Information</h3>
+                                <h3 class="panel-title"><i class="fa fa-info-circle fa-fw"></i>Your Information</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">

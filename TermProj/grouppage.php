@@ -29,7 +29,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/internal_style.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="css/plugins/morris.css" rel="stylesheet">
@@ -65,39 +65,11 @@
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b
-                        class="caret"></b></a>
-                <ul class="dropdown-menu alert-dropdown">
-                    <li>
-                        <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                    </li>
-                    <li>
-                        <a href="#">Alert Name <span class="label label-primary">Notice</span></a>
-                    </li>
-                    <li>
-                        <a href="#">Alert Name <span class="label label-success">Answer</span></a>
-                    </li>
-                    <li>
-                        <a href="#">Alert Name <span class="label label-warning">Question</span></a>
-                    </li>
-                    <li>
-                        <a href="#">Alert Name <span class="label label-danger">Exam</span></a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">View All</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['login_user']; ?> <b
                         class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
                     <li>
@@ -169,7 +141,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li class="active">
-                            <i class="fa fa-dashboard"></i> <?php echo "Group Description: " . $groupinfo[0]['descr'] ?>
+                            <i class="fa fa-group"></i> <?php echo "Group Description: " . $groupinfo[0]['descr'] ?>
                         </li>
                     </ol>
                 </div>
@@ -234,7 +206,7 @@
         </div>
         <!-- /.row -->
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i>Discussion Board</h3>

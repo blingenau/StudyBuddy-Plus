@@ -1,0 +1,33 @@
+Blake: Database hosting, Fixed issues with login PHP
+
+************************************************************************************************************************
+
+
+David: Frontend development, debugging, styling
+
+Participated in the group discussion of what to do with our project and brought up many different ideas.
+Worked on styling for all internal pages.
+Created index page
+Created frontend pages and standardized menus
+Helped debug some PHP and HTML issues
+
+************************************************************************************************************************
+
+
+Graigor: Frontend development
+
+************************************************************************************************************************
+
+
+Julian: Backend development
+
+Contributed ideas that led to the basis of our project's purpose.
+Worked on the connectivity of the database where php post requests were used to input
+new users that registers and logging in. Coded the search query
+to find relevant groups in our database that pertains to group name, course number, and description
+and the password change form so users if they want to, can change their password.
+
+************************************************************************************************************************
+
+Lu: Search functionality, Backend development
+
