@@ -21,6 +21,7 @@ Graigor: Frontend development
 
 Worked on some minor changes / debugging features after pages were pushed to the git
 created original template for profile page
+Made update to php to make group names unique and made it so you could only be added to a group once
 
 ************************************************************************************************************************
 
