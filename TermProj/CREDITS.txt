@@ -1,5 +1,8 @@
 Blake: Database hosting, Fixed issues with login PHP
 
+Did a lot of bug checking/fixing. Configured the files to host the database on my
+cloud server. Previous MySQL experience was helpful. 
+
 ************************************************************************************************************************
 
 
@@ -18,6 +21,7 @@ Graigor: Frontend development
 
 Worked on some minor changes / debugging features after pages were pushed to the git
 created original template for profile page
+Made update to php to make group names unique and made it so you could only be added to a group once
 
 ************************************************************************************************************************
 
