@@ -262,6 +262,7 @@
                                     $connection = mysql_connect("$servername", "$d_username", "$d_password");
                                     $db = mysql_select_db("$db_name", $connection);
                                     $query = mysql_query("SELECT student,groupName FROM members WHERE student='$login_session'", $connection);
+                                    mysql_close($connection);
                                     $already_in_group=false;
                                     while($row=mysql_fetch_array($query)){
                                         if($row[1]==$_POST['target_group']){
@@ -270,13 +271,13 @@
                                         }
                                     }
                                     if(!$already_in_group){
-                                    $db_handle = new PDO("mysql:host=$servername;dbname=$db_name", "$d_username", "$d_password");
-                                    $insert_stmt = $db_handle->prepare("INSERT INTO `members`(`student`,`groupName`) VALUES(?,?)");
-                                    $insert_stmt->bindParam(1, $_SESSION['login_user']);
-                                    $insert_stmt->bindParam(2, $_POST['target_group']);
-                                    $insert_stmt->execute();
-                                    $success = $insert_stmt->fetchAll();
-                                    echo "<h4>Group Added!</h4>";
+                                        $db_handle = new PDO("mysql:host=$servername;dbname=$db_name", "$d_username", "$d_password");
+                                        $insert_stmt = $db_handle->prepare("INSERT INTO `members`(`student`,`groupName`) VALUES(?,?)");
+                                        $insert_stmt->bindParam(1, $_SESSION['login_user']);
+                                        $insert_stmt->bindParam(2, $_POST['target_group']);
+                                        $insert_stmt->execute();
+                                        $success = $insert_stmt->fetchAll();
+                                        echo "<h4>Group Added!</h4>";
                                     } else{
                                         echo "<h4>Already in group.</h4>";
                                     }

@@ -5,6 +5,12 @@
         $d_password = "";
         $db_name = "studybuddyplus";
         $db_handle = new PDO("mysql:host=$servername;dbname=$db_name", "$d_username", "$d_password");
+
+        $rslt = $db_handle->query("SELECT * FROM groups WHERE name='$g'");
+        if(sizeof($rslt)!=0){
+            throw new Exception('This group name is already taken.');
+        }
+
         $insert_stmt = $db_handle->prepare("INSERT INTO `groups`(`name`,`courseNum`,`descr`,`creator`,`time`,`level`)VALUES(?,?,?,?,?,?) ");
         
         if (empty($g)) {
