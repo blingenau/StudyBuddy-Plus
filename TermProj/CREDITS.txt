@@ -42,4 +42,4 @@ Connecting databases with web pages and transferring data by post method.
 Implemented admin privileges for creator of groups, only creator can add users into the group.
 Making user and group search functionality working.
 Constructed anchor tags with a hidden form submitted by post method, so group info page can work
-from multiple font end pages.  
+from multiple font end pages.
