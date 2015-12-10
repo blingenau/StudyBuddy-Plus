@@ -38,3 +38,6 @@ and the password change form so users if they want to, can change their password
 
 Lu: Search functionality, Backend development
 
+Helped integrate the database with the site
+Wrote the search functionality that allows users to add groups
+Helped contribute ideas to group discussions
