@@ -37,6 +37,13 @@ and the password change form so users if they want to, can change their password
 ************************************************************************************************************************
 
 Lu: Search functionality, Backend development
+Worked on mainly on backend functionality, like creating groups and posting comments on discussion board.
+Connecting databases with web pages and transferring data by post method. 
+Implemented admin privileges for creator of groups, only creator can add users into the group.
+Making user and group search functionality working.
+Constructed achor tags with a hidden form submitted by post method, so group info page can work 
+from multiple font end pages.  
+
 
 Helped integrate the database with the site
 Wrote the search functionality that allows users to add groups
